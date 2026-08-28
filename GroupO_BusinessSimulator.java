@@ -26,6 +26,22 @@ public class GroupO_BusinessSimulator {
             4
         };
 
+        // -----------------------------
+        // DISPLAY PRICE LIST
+        // -----------------------------
+
+        System.out.println("===== POWERFUEL STATION =====");
+
+        for (int i = 0; i < itemNames.length; i++) {
+
+            System.out.printf(
+                "%d. %s - UGX %.2f%n",
+                i + 1,
+                itemNames[i],
+                prices[i]
+            );
+        }
+
         
     }
 }
