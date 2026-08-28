@@ -58,6 +58,26 @@ public class GroupO_BusinessSimulator {
             );
         }
 
+        // CALCULATE GRAND TOTAL
+        // -----------------------------
+
+        double grandTotal = 0;
+
+        for (int i = 0; i < subtotals.length; i++) {
+
+            grandTotal = grandTotal + subtotals[i];
+        }
+
+        // -----------------------------
+        // PRINT RECEIPT
+        // -----------------------------
+
+        printReceipt(
+            itemNames,
+            quantities,
+            subtotals,
+            grandTotal
+        );
     }
 
 }
