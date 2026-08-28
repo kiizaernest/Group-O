@@ -58,6 +58,7 @@ public class GroupO_BusinessSimulator{
                 i
             );
         }
+<<<<<<< HEAD
 
 
         // -----------------------------
@@ -94,9 +95,15 @@ public class GroupO_BusinessSimulator{
         int quantity,
         int itemIndex
     ) {
+=======
 
-        double subtotal = price * quantity;
+        // CALCULATE GRAND TOTAL
+        // -----------------------------
+>>>>>>> d839eda12ebd1af05f29bcc77ba5b372b1246d5a
 
+        double grandTotal = 0;
+
+<<<<<<< HEAD
 
         // Petrol
         if (itemIndex == 0) {
@@ -239,4 +246,78 @@ public class GroupO_BusinessSimulator{
             grandTotal
         );
     }
+=======
+        for (int i = 0; i < subtotals.length; i++) {
+
+            grandTotal = grandTotal + subtotals[i];
+        }
+
+        // -----------------------------
+        // PRINT RECEIPT
+        // -----------------------------
+
+        printReceipt(
+            itemNames,
+            quantities,
+            subtotals,
+            grandTotal
+        );
+    }
+
+    // =================================================
+    // METHOD 1: CALCULATE SUBTOTAL AND APPLY DISCOUNT
+    // =================================================
+
+    public static double calculateSubtotal(
+        double price,
+        int quantity,
+        int itemIndex
+    ) {
+
+        double subtotal = price * quantity;
+
+
+        // Petrol
+        if (itemIndex == 0) {
+
+            if (quantity >= 20) {
+
+                subtotal = subtotal - (subtotal * 0.05);
+            }
+
+        }
+
+        // Diesel
+        else if (itemIndex == 1) {
+
+            // Diesel has no discount
+            subtotal = subtotal;
+
+        }
+
+        // Engine Oil
+        else if (itemIndex == 2) {
+
+            if (quantity >= 3) {
+
+                subtotal = subtotal - 3000;
+            }
+
+        }
+
+        // Car Wash
+        else if (itemIndex == 3) {
+
+            if (quantity >= 4) {
+
+                subtotal = subtotal - (subtotal * 0.10);
+            }
+
+        }
+
+
+        return subtotal;
+    }
+
+>>>>>>> d839eda12ebd1af05f29bcc77ba5b372b1246d5a
 }
