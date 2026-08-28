@@ -26,6 +26,38 @@ public class GroupO_BusinessSimulator {
             4    // Car Wash
         };
 
+        // -----------------------------
+        // DISPLAY PRICE LIST
+        // -----------------------------
+
+        System.out.println("===== POWERFUEL STATION =====");
+
+        for (int i = 0; i < itemNames.length; i++) {
+
+            System.out.printf(
+                "%d. %s - UGX %.2f%n",
+                i + 1,
+                itemNames[i],
+                prices[i]
+            );
+        }
+
+
+        // -----------------------------
+        // CALCULATE SUBTOTALS
+        // -----------------------------
+
+        double[] subtotals = new double[itemNames.length];
+
+        for (int i = 0; i < itemNames.length; i++) {
+
+            subtotals[i] = calculateSubtotal(
+                prices[i],
+                quantities[i],
+                i
+            );
+        }
+
     }
 
 }
