@@ -26,7 +26,6 @@ public class GroupO_BusinessSimulator{
             4    // Car Wash
         };
 
-
         // -----------------------------
         // DISPLAY PRICE LIST
         // -----------------------------
@@ -43,7 +42,6 @@ public class GroupO_BusinessSimulator{
             );
         }
 
-
         // -----------------------------
         // CALCULATE SUBTOTALS
         // -----------------------------
@@ -58,9 +56,6 @@ public class GroupO_BusinessSimulator{
                 i
             );
         }
-
-
-        
 
         // CALCULATE GRAND TOTAL
         // -----------------------------
@@ -96,7 +91,6 @@ public class GroupO_BusinessSimulator{
 
         double subtotal = price * quantity;
 
-
         // Petrol
         if (itemIndex == 0) {
 
@@ -104,7 +98,6 @@ public class GroupO_BusinessSimulator{
 
                 subtotal = subtotal - (subtotal * 0.05);
             }
-
         }
 
         // Diesel
@@ -132,13 +125,10 @@ public class GroupO_BusinessSimulator{
 
                 subtotal = subtotal - (subtotal * 0.10);
             }
-
         }
-
 
         return subtotal;
     }
-
     // =========================================
     // METHOD 2: PRINT THE ITEMISED RECEIPT
     // =========================================
@@ -153,7 +143,6 @@ public class GroupO_BusinessSimulator{
         System.out.println();
         System.out.println("===== RECEIPT =====");
 
-
         for (int i = 0; i < itemNames.length; i++) {
 
             System.out.printf(
@@ -162,7 +151,6 @@ public class GroupO_BusinessSimulator{
                 quantities[i],
                 subtotals[i]
             );
-
 
             // Petrol discount message
             if (i == 0) {
@@ -177,7 +165,6 @@ public class GroupO_BusinessSimulator{
                         " (no discount - fewer than 20)"
                     );
                 }
-
             }
 
             // Diesel discount message
@@ -186,7 +173,6 @@ public class GroupO_BusinessSimulator{
                 System.out.println(
                     " (no discount)"
                 );
-
             }
 
             // Engine Oil discount message
@@ -204,7 +190,6 @@ public class GroupO_BusinessSimulator{
                         " (no discount - fewer than 3)"
                     );
                 }
-
             }
 
             // Car Wash discount message
@@ -215,18 +200,14 @@ public class GroupO_BusinessSimulator{
                     System.out.println(
                         " (10% discount applied)"
                     );
-
                 } else {
 
                     System.out.println(
                         " (no discount - fewer than 4)"
                     );
                 }
-
             }
-
         }
-
 
         System.out.println(
             "-------------------------------------------"
