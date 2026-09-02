@@ -1,222 +1,66 @@
-public class GroupO_BusinessSimulator{
+public class GroupO_BusinessSimulator {
+// METHOD 1: this is working out the subtotals with the associated discount ruls
+public static double getDiscountedSubtotal(String itemName, double price, int qty) {
+  double finalPrice = price ;
 
-    public static void main(String[] args) {
+  if (itemName.equals("Petrol (litre)") && qty >= 20 ) {  //.equalsIgnoreCase()
+    finalPrice = price - (price * 0.05) ;
+    System.out.println("Petrol Discount Applied");
+  }
+  if (itemName.equals("Engine Oil") && qty >= 3 ) {
+    finalPrice = price - 3000;
+    System.out.println("Engine oil Discount Applied");
+  }
+  if (itemName.equals("Car Wash") && qty >= 4 ) {
+    finalPrice = price - (price * 0.1) ;
+    System.out.println("Car wash Discount Applied");
+  }
 
-        // Store the four item names in an array
-        String[] itemNames = {
-            "Petrol (litre)",
-            "Diesel (litre)",
-            "Engine Oil",
-            "Car Wash"
-        };
+  return finalPrice * qty; //return's only one individual item's subtotal
+}
 
-        // Store the prices in another array
-        double[] prices = {
-            5000.00,
-            4800.00,
-            25000.00,
-            10000.00
-        };
+//Method 2 : prints a single line of the receipt
+  public static void printReceiptLine(String item, int qty, double itemTotal) {
+    System.out.println(item + "  x" + qty + " = UGX " + itemTotal ); // we need to output each subtotal then a grandtotal
+  }  
 
-        // Quantities being bought
-        int[] quantities = {
-            19,  // Petrol
-            2,   // Diesel
-            2,   // Engine Oil
-            4    // Car Wash
-        };
+  public static void main(String[] args) {
+    //POWER FUEL STATION
+    String[] fuel_items = {"Petrol (litre)" , "Diesel (litre)" , "Engine Oil" ,"Car Wash"} ;
+    double[] fuel_item_prices = {5000 , 4800, 25000 , 10000 } ; //we can improve this by using a two  dimensional array
+    int i = 1;
+    int j = 0;
+  System.out.println("==== POWER FUEL STATION ====");
+  for(String item : fuel_items) { //we can improve this by using a  continue statement to align te receipt or if conditions to fix the spacing(it can't be connstant)
+    System.out.println(i + ". " + item + "      UGX" + fuel_item_prices[j]);
+    i++;
+    j++;
+  }
+  int[] fuel_item_qties = {19 , 2 , 2, 4} ; //each is in order of petrol,diesel,engineoil  and carwash
+  //for future edits , make a for loop for quantities to be automatically filled into the array
 
-        // -----------------------------
-        // DISPLAY PRICE LIST
-        // -----------------------------
-
-        System.out.println("===== POWERFUEL STATION =====");
-
-        for (int i = 0; i < itemNames.length; i++) {
-
-            System.out.printf(
-                "%d. %s - UGX %.2f%n",
-                i + 1,
-                itemNames[i],
-                prices[i]
-            );
-        }
-
-        // -----------------------------
-        // CALCULATE SUBTOTALS
-        // -----------------------------
-
-        double[] subtotals = new double[itemNames.length];
-
-        for (int i = 0; i < itemNames.length; i++) {
-
-            subtotals[i] = calculateSubtotal(
-                prices[i],
-                quantities[i],
-                i
-            );
-        }
-
-        // CALCULATE GRAND TOTAL
-        // -----------------------------
-
-        double grandTotal = 0;
-
-        for (int i = 0; i < subtotals.length; i++) {
-
-            grandTotal = grandTotal + subtotals[i];
-        }
-
-        // -----------------------------
-        // PRINT RECEIPT
-        // -----------------------------
-
-        printReceipt(
-            itemNames,
-            quantities,
-            subtotals,
-            grandTotal
-        );
-    }
-
-    // =================================================
-    // METHOD 1: CALCULATE SUBTOTAL AND APPLY DISCOUNT
-    // =================================================
-
-    public static double calculateSubtotal(
-        double price,
-        int quantity,
-        int itemIndex
-    ) {
-
-        double subtotal = price * quantity;
-
-        // Petrol
-        if (itemIndex == 0) {
-
-            if (quantity >= 20) {
-
-                subtotal = subtotal - (subtotal * 0.05);
-            }
-        }
-
-        // Diesel
-        else if (itemIndex == 1) {
-
-            // Diesel has no discount
-            subtotal = subtotal;
-
-        }
-
-        // Engine Oil
-        else if (itemIndex == 2) {
-
-            if (quantity >= 3) {
-
-                subtotal = subtotal - 3000;
-            }
-
-        }
-
-        // Car Wash
-        else if (itemIndex == 3) {
-
-            if (quantity >= 4) {
-
-                subtotal = subtotal - (subtotal * 0.10);
-            }
-        }
-
-        return subtotal;
-    }
-    // =========================================
-    // METHOD 2: PRINT THE ITEMISED RECEIPT
-    // =========================================
-
-    public static void printReceipt(
-        String[] itemNames,
-        int[] quantities,
-        double[] subtotals,
-        double grandTotal
-    ) {
-
-        System.out.println();
-        System.out.println("===== RECEIPT =====");
-
-        for (int i = 0; i < itemNames.length; i++) {
-
-            System.out.printf(
-                "%s x%d = UGX %.2f",
-                itemNames[i],
-                quantities[i],
-                subtotals[i]
-            );
-
-            // Petrol discount message
-            if (i == 0) {
-
-                if (quantities[i] >= 20) {
-
-                    System.out.println(" (5% discount applied)");
-
-                } else {
-
-                    System.out.println(
-                        " (no discount - fewer than 20)"
-                    );
-                }
-            }
-
-            // Diesel discount message
-            else if (i == 1) {
-
-                System.out.println(
-                    " (no discount)"
-                );
-            }
-
-            // Engine Oil discount message
-            else if (i == 2) {
-
-                if (quantities[i] >= 3) {
-
-                    System.out.println(
-                        " (UGX 3,000 discount applied)"
-                    );
-
-                } else {
-
-                    System.out.println(
-                        " (no discount - fewer than 3)"
-                    );
-                }
-            }
-
-            // Car Wash discount message
-            else if (i == 3) {
-
-                if (quantities[i] >= 4) {
-
-                    System.out.println(
-                        " (10% discount applied)"
-                    );
-                } else {
-
-                    System.out.println(
-                        " (no discount - fewer than 4)"
-                    );
-                }
-            }
-        }
-
-        System.out.println(
-            "-------------------------------------------"
-        );
-
-        System.out.printf(
-            "TOTAL = UGX %.2f%n",
-            grandTotal
-        );
-    }
-
+  //we are now going to use our method  to work out the discounted subtotals
+  int k = 0;
+  double subtotal = 0;
+  double[] itemTotals = new double[fuel_items.length] ; //this will store each item's final totsl to the receipt
+  for (int qty : fuel_item_qties) {
+    double itemTotal = getDiscountedSubtotal(fuel_items[k] , fuel_item_prices[k] , qty);
+    itemTotals[k] = itemTotal;
+    subtotal += itemTotal ;
+    k++;
+  }
+//RECEIPT CODE
+System.out.println("==== RECEIPT ====");
+int m = 0;
+for(String item : fuel_items) {
+  //here we want to only orint the items that the client bought
+  if (fuel_item_qties[m] > 0 ){//here we only want to print what has actually been bought
+    printReceiptLine(item, fuel_item_qties[m], itemTotals[m]);
+  }
+  m++;
+}
+     
+System.out.println("-----------------------------------");
+System.out.println("TOTAL      = UGX " + subtotal);
+  }
 }
