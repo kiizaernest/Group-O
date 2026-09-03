@@ -3,7 +3,7 @@ public class GroupO_BusinessSimulator {
 public static double getDiscountedSubtotal(String itemName, double price, int qty) {
   double finalPrice = price ;
 
-  if (itemName.equals("Petrol (litre)") && qty >= 20 ) {  //.equalsIgnoreCase()
+  if (itemName.equalsIgnoreCase("Petrol (litre)") && qty >= 20 ) {  //.equalsIgnoreCase()
     finalPrice = price - (price * 0.05) ;
     System.out.println("Petrol Discount Applied");
   }
