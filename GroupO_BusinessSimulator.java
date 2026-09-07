@@ -12,10 +12,10 @@ public class GroupO_BusinessSimulator{
 
         // Store the prices in another array
         double[] prices = {
-            5000.00,
-            4800.00,
-            25000.00,
-            10000.00
+            5000,
+            4800,
+            25000,
+            10000
         };
 
         // Quantities being bought
@@ -26,9 +26,7 @@ public class GroupO_BusinessSimulator{
             4    // Car Wash
         };
 
-        // -----------------------------
         // DISPLAY PRICE LIST
-        // -----------------------------
 
         System.out.println("===== POWERFUEL STATION =====");
 
@@ -42,9 +40,7 @@ public class GroupO_BusinessSimulator{
             );
         }
 
-        // -----------------------------
         // CALCULATE SUBTOTALS
-        // -----------------------------
 
         double[] subtotals = new double[itemNames.length];
 
@@ -58,7 +54,6 @@ public class GroupO_BusinessSimulator{
         }
 
         // CALCULATE GRAND TOTAL
-        // -----------------------------
 
         double grandTotal = 0;
 
@@ -67,9 +62,7 @@ public class GroupO_BusinessSimulator{
             grandTotal = grandTotal + subtotals[i];
         }
 
-        // -----------------------------
         // PRINT RECEIPT
-        // -----------------------------
 
         printReceipt(
             itemNames,
@@ -79,9 +72,7 @@ public class GroupO_BusinessSimulator{
         );
     }
 
-    // =================================================
     // METHOD 1: CALCULATE SUBTOTAL AND APPLY DISCOUNT
-    // =================================================
 
     public static double calculateSubtotal(
         double price,
@@ -129,9 +120,8 @@ public class GroupO_BusinessSimulator{
 
         return subtotal;
     }
-    // =========================================
+    
     // METHOD 2: PRINT THE ITEMISED RECEIPT
-    // =========================================
 
     public static void printReceipt(
         String[] itemNames,
